@@ -12,21 +12,34 @@ class WaitingScreen extends StatelessWidget {
             colors: [Color(0xFFFFA63D), Color(0xFFFFEB3B)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
+            stops: [0, 1],
+            tileMode: TileMode.clamp,
           ),
         ),
-        child: Stack(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
+            Expanded(
+              child: Container(),
+            ),
+            Container(
+              color: Colors.white, // Задний фон белый
+              padding: const EdgeInsets.only(bottom: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Логотип приложения
-                  Image.asset(
-                    'assets/logo.png', // Путь к вашей картинке
-                    width: 150,
-                    height: 150,
+                  Container(
+                    width: 200,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image:
+                            AssetImage('assets/logo.png'), // Путь к изображению
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 20),
                   // Кнопки
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -48,14 +61,14 @@ class WaitingScreen extends StatelessWidget {
                         ),
                         child: const Text('Вход'),
                       ),
-                      const SizedBox(width: 16),
+                      const SizedBox(width: 12),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamed(context, '/registration');
                         },
                         style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
                           backgroundColor: const Color(0xFF4C6ED7),
-                          shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6),
                           ),
