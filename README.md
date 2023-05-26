@@ -36,7 +36,10 @@
 
 <h1>Лицензия</h1>
 <h2>MIT Лицензия</h2>
-![image](https://github.com/424Nkita-Csharsfta4/Moodle_Diplomka/assets/103760832/a0160c60-9717-4d92-abd3-9a4870521a5e)
+
+
+![image](https://github.com/424Nkita-Csharsfta4/Moodle_Diplomka/assets/103760832/afee446a-548f-4c7d-b664-9d86844bc662)
+
 
 ![image](https://github.com/424Nkita-Csharsfta4/Moodle_Diplomka/assets/103760832/30358943-552e-426e-bfad-c4fb4f2a5c06)
 
