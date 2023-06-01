@@ -7,80 +7,62 @@ class WaitingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFFFA63D), Color(0xFFFFEB3B)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0, 1],
-            tileMode: TileMode.clamp,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Container(),
-            ),
-            Container(
-              color: Colors.white, // Задний фон белый
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Column(
+        color: Colors.white, // Задаем белый цвет фона
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 80), // Добавляем отступ сверху
+              // Логотип приложения
+              SizedBox(
+                width: 200,
+                height: 200,
+                child: Image.network(
+                  'https://sun9-26.userapi.com/impg/BcM9ZJnyLKJi0UktgxUL7h8CkA2ST267KkQqKA/28lOIrfjYRU.jpg?size=224x54&quality=96&sign=f1983bbc9e9ee561cb728867db89e1f6&type=album',
+                  fit: BoxFit.contain,
+                ),
+              ),
+              const SizedBox(height: 25),
+              // Кнопки
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Логотип приложения
-                  Container(
-                    width: 200,
-                    height: 200,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image:
-                            AssetImage('assets/logo.png'), // Путь к изображению
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
                       ),
                     ),
+                    child: const Text('Вход'),
                   ),
-                  const SizedBox(height: 20),
-                  // Кнопки
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/login');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          backgroundColor: Colors.white,
-                          side: const BorderSide(
-                            color: Colors.black,
-                            width: 2,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: const Text('Вход'),
+                  const SizedBox(width: 12),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/registration');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: const Color(0xFF4C6ED7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3),
                       ),
-                      const SizedBox(width: 12),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/registration');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: const Color(0xFF4C6ED7),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
-                        child: const Text('Регистрация'),
-                      ),
-                    ],
+                    ),
+                    child: const Text('Регистрация'),
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 20), // Добавляем отступ снизу
+            ],
+          ),
         ),
       ),
     );
