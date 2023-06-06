@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'input-group.dart';
+import 'main_ribbon.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -9,11 +10,21 @@ class RegistrationScreen extends StatefulWidget {
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
+/// Для ввода и заполнения
+class User {
+  final String firstName;
+  final String lastName;
+
+  User({required this.firstName, required this.lastName});
+}
+
 class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _showPassword = false;
   String? _userType;
   final _formKey = GlobalKey<FormState>();
 
+  String? _firstName;
+  String? _lastName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +132,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => GroupSelectionScreen(),
+                        builder: (context) => InputGroupNextScreen(
+                            user: User(
+                                firstName: _firstName!, lastName: _lastName!)),
                       ),
                     );
                   }

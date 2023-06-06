@@ -1,5 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:my_app/registration_screen.dart';
+import 'main_ribbon.dart';
 
 class GroupSelectionScreen extends StatefulWidget {
   const GroupSelectionScreen({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class GroupSelectionScreen extends StatefulWidget {
 class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
   final TextEditingController _groupController = TextEditingController();
   String? _errorMessage;
+
+  get user => null;
 
   @override
   void dispose() {
@@ -31,7 +35,7 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const NextScreen(),
+            builder: (context) => InputGroupNextScreen(user: user!),
           ),
         );
       }
@@ -84,7 +88,7 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
 
 // Placeholder screen
 class NextScreen extends StatelessWidget {
-  const NextScreen({super.key});
+  const NextScreen({super.key, required User user});
 
   @override
   Widget build(BuildContext context) {
