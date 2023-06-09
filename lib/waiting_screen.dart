@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WaitingScreen extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const WaitingScreen({Key? key});
 
   @override

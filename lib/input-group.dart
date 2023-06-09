@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:my_app/registration_screen.dart';
+// ignore: unused_import
 import 'main_ribbon.dart';
 
 class GroupSelectionScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => InputGroupNextScreen(user: user!),
+            builder: (context) => NextScreen(user: user!),
           ),
         );
       }
@@ -47,6 +48,16 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
     // Implement your validation logic here
     // Return true if the group exists, false otherwise
     return group == '111' || group == '112' || group == '113';
+  }
+
+  // ignore: non_constant_identifier_names
+  void InputGroupNextScreen({required User user}) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NextScreen(user: user),
+      ),
+    );
   }
 
   @override
@@ -88,7 +99,7 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
 
 // Placeholder screen
 class NextScreen extends StatelessWidget {
-  const NextScreen({super.key, required User user});
+  const NextScreen({Key? key, required User user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

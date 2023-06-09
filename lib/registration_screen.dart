@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'input-group.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 import 'main_ribbon.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -10,7 +12,6 @@ class RegistrationScreen extends StatefulWidget {
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-/// Для ввода и заполнения
 class User {
   final String firstName;
   final String lastName;
@@ -22,9 +23,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   bool _showPassword = false;
   String? _userType;
   final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
 
-  String? _firstName;
-  String? _lastName;
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _nameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +61,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 20),
               TextFormField(
+                controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: 'Почта',
                 ),
@@ -63,6 +74,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 12),
               TextFormField(
+                controller: _passwordController,
                 obscureText: !_showPassword,
                 decoration: InputDecoration(
                   labelText: 'Пароль',
@@ -86,6 +98,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 12),
               TextFormField(
+                controller: _nameController,
                 decoration: const InputDecoration(
                   labelText: 'ФИО',
                 ),
@@ -123,20 +136,48 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Если все поля прошли валидацию
-                    // Выполняйте регистрационную логику здесь
+                onPressed: () async {
+                  if (_formKey.currentState != null &&
+                      _formKey.currentState!.validate()) {
+                    final email = _emailController.text;
+                    final password = _passwordController.text;
 
-                    // Перенаправление на новый экран для выбора группы
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => InputGroupNextScreen(
-                            user: User(
-                                firstName: _firstName!, lastName: _lastName!)),
-                      ),
-                    );
+                    final url = Uri.parse('');
+                    final body =
+                        jsonEncode({'email': email, 'password': password});
+
+                    try {
+                      final response = await http.post(url, body: body);
+
+                      if (response.statusCode == 200) {
+                        // ignore: use_build_context_synchronously
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NewsFeedScreen(),
+                          ),
+                        );
+                      } else {
+                        // ignore: use_build_context_synchronously
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text('Ошибка'),
+                            content: const Text('Неверные учетные данные.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    } catch (error) {
+                      print('Ошибка: $error');
+                    }
                   }
                 },
                 child: const Text('Регистрация'),
@@ -162,6 +203,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 }
 
 class SpecializationSelectionScreen extends StatelessWidget {
+  const SpecializationSelectionScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -221,50 +264,4 @@ class SpecializationSelectionScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-@override
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: const Text('Выбор специальности'),
-    ),
-    body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Выберите группу в каторой вы учитесь:',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              // Обработчик нажатия кнопки выбора специальности
-            },
-            child: const Text('Юристы'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Обработчик нажатия кнопки выбора специальности
-            },
-            child: const Text('Программисты'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Обработчик нажатия кнопки выбора специальности
-            },
-            child: const Text('Инженеры'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Обработчик нажатия кнопки выбора специальности
-            },
-            child: const Text('Философы'),
-          ),
-        ],
-      ),
-    ),
-  );
 }
