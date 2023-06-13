@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'main_ribbon.dart';
+import 'news_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -23,7 +22,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Поле ввода электронной почты
+                // Email input field
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
@@ -33,11 +32,11 @@ class LoginScreen extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return 'Пожалуйста, введите электронную почту';
                     }
-                    // Добавьте здесь любую другую валидацию почты по вашему усмотрению
+                    // Add any other email validation logic here as per your requirements
                     return null;
                   },
                 ),
-                // Поле ввода пароля
+                // Password input field
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
@@ -48,29 +47,27 @@ class LoginScreen extends StatelessWidget {
                     if (value == null || value.isEmpty) {
                       return 'Пожалуйста, введите пароль';
                     }
-                    // Добавьте здесь любую другую валидацию пароля по вашему усмотрению
+                    // Add any other password validation logic here as per your requirements
                     return null;
                   },
                 ),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    // При нажатии кнопки проверяем валидность полей
                     if (_formKey.currentState != null &&
                         _formKey.currentState!.validate()) {
-                      // Если поля валидны, можно выполнять действия, например, авторизацию
                       String email = _emailController.text;
+                      // ignore: unused_local_variable
                       String password = _passwordController.text;
-                      // Добавьте здесь логику для обработки входа
 
-                      // Переход на другой экран с информацией
+                      // Authenticate the user here with the provided email and password
+                      // Add your authentication logic here
+
+                      // Navigate to the news screen with the user's name
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => UserInfoScreen(
-                            email: email,
-                            password: password,
-                          ),
+                          builder: (context) => NewsScreen(username: email),
                         ),
                       );
                     }
@@ -80,44 +77,6 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class UserInfoScreen extends StatelessWidget {
-  final String email;
-  final String password;
-
-  const UserInfoScreen({
-    Key? key,
-    required this.email,
-    required this.password,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Информация о пользователе'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Email: $email'),
-            const SizedBox(height: 8.0),
-            Text('Пароль: $password'),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // Обработчик нажатия кнопки "Назад"
-                Navigator.pop(context);
-              },
-              child: const Text('Назад'),
-            ),
-          ],
         ),
       ),
     );

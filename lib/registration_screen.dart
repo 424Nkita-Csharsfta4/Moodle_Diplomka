@@ -8,7 +8,7 @@ class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
+// ignore: library_private_types_in_public_api
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
@@ -33,6 +33,97 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     _passwordController.dispose();
     _nameController.dispose();
     super.dispose();
+  }
+
+  void handleRegistration() async {
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      final url = Uri.parse('');
+      final body = jsonEncode({'email': email, 'password': password});
+
+      try {
+        final response = await http.post(url, body: body);
+
+        if (response.statusCode == 200) {
+          // ignore: use_build_context_synchronously
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NewsFeedScreen(),
+            ),
+          );
+        } else {
+          // ignore: use_build_context_synchronously
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Ошибка'),
+              content: const Text('Неверные учетные данные.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          );
+        }
+      } catch (error) {
+        print('Ошибка: $error');
+      }
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const NewsFeedScreen(),
+        ),
+      );
+    }
+
+    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      final url = Uri.parse('');
+      final body = jsonEncode({'email': email, 'password': password});
+
+      try {
+        final response = await http.post(url, body: body);
+
+        if (response.statusCode == 200) {
+          // ignore: use_build_context_synchronously
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NewsFeedScreen(),
+            ),
+          );
+        } else {
+          // ignore: use_build_context_synchronously
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Ошибка'),
+              content: const Text('Неверные учетные данные.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          );
+        }
+      } catch (error) {
+        print('Ошибка: $error');
+      }
+    }
   }
 
   @override
@@ -136,50 +227,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState != null &&
-                      _formKey.currentState!.validate()) {
-                    final email = _emailController.text;
-                    final password = _passwordController.text;
-
-                    final url = Uri.parse('');
-                    final body =
-                        jsonEncode({'email': email, 'password': password});
-
-                    try {
-                      final response = await http.post(url, body: body);
-
-                      if (response.statusCode == 200) {
-                        // ignore: use_build_context_synchronously
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const NewsFeedScreen(),
-                          ),
-                        );
-                      } else {
-                        // ignore: use_build_context_synchronously
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: const Text('Ошибка'),
-                            content: const Text('Неверные учетные данные.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
-                    } catch (error) {
-                      print('Ошибка: $error');
-                    }
-                  }
-                },
+                onPressed: handleRegistration,
                 child: const Text('Регистрация'),
               ),
               const SizedBox(height: 12),
@@ -188,7 +236,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      // Обработчик нажатия кнопки "Вход"
+// Обработчик нажатия кнопки "Вход"
                     },
                     child: const Text('Вход'),
                   ),
@@ -224,7 +272,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+// Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Юристы'),
               ),
@@ -234,7 +282,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+// Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Программисты'),
               ),
@@ -244,7 +292,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+// Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Инженеры'),
               ),
@@ -254,7 +302,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+// Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Философы'),
               ),
