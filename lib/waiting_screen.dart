@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 class WaitingScreen extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const WaitingScreen({Key? key});
+  const WaitingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white, // Задаем белый цвет фона
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 80), // Добавляем отступ сверху
-              // Логотип приложения
+              const SizedBox(height: 80),
               SizedBox(
                 width: 200,
                 height: 200,
@@ -24,7 +22,6 @@ class WaitingScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 25),
-              // Кнопки
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -33,8 +30,8 @@ class WaitingScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/login');
                     },
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
                       side: const BorderSide(
                         color: Colors.black,
                         width: 2,
@@ -51,8 +48,8 @@ class WaitingScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/registration');
                     },
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: const Color(0xFF4C6ED7),
+                      primary: const Color(0xFF4C6ED7),
+                      onPrimary: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(3),
                       ),
@@ -61,7 +58,7 @@ class WaitingScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 20), // Добавляем отступ снизу
+              const SizedBox(height: 20),
             ],
           ),
         ),

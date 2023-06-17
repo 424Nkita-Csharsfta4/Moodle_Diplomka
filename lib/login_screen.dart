@@ -36,6 +36,7 @@ class LoginScreen extends StatelessWidget {
                     return null;
                   },
                 ),
+                const SizedBox(height: 16.0),
                 // Password input field
                 TextFormField(
                   controller: _passwordController,
@@ -51,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16.0),
+                const SizedBox(height: 24.0),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState != null &&

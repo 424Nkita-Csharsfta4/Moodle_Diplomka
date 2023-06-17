@@ -8,7 +8,6 @@ class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
-// ignore: library_private_types_in_public_api
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
@@ -73,6 +72,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           );
         }
       } catch (error) {
+        // ignore: avoid_print
         print('Ошибка: $error');
       }
     } else {
@@ -121,6 +121,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           );
         }
       } catch (error) {
+        // ignore: avoid_print
         print('Ошибка: $error');
       }
     }
@@ -129,9 +130,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Регистрация'),
-      ),
+      // Используем MainRibbon вместо AppBar
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Form(
@@ -236,7 +235,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 children: [
                   TextButton(
                     onPressed: () {
-// Обработчик нажатия кнопки "Вход"
+                      // Обработчик нажатия кнопки "Вход"
                     },
                     child: const Text('Вход'),
                   ),
@@ -272,7 +271,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-// Обработчик нажатия кнопки выбора специальности
+                  // Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Юристы'),
               ),
@@ -282,7 +281,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-// Обработчик нажатия кнопки выбора специальности
+                  // Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Программисты'),
               ),
@@ -292,7 +291,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-// Обработчик нажатия кнопки выбора специальности
+                  // Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Инженеры'),
               ),
@@ -302,13 +301,33 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-// Обработчик нажатия кнопки выбора специальности
+                  // Обработчик нажатия кнопки выбора специальности
                 },
                 child: const Text('Философы'),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MainRibbon extends StatelessWidget {
+  const MainRibbon({Key? key}) : super(key: key);
+
+  // ignore: override_on_non_overriding_member
+  @override
+  Size get preferredSize => const Size.fromHeight(56);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 1,
+      title: Image.network(
+        'https://sun9-26.userapi.com/impg/BcM9ZJnyLKJi0UktgxUL7h8CkA2ST267KkQqKA/28lOIrfjYRU.jpg?size=224x54&quality=96&sign=f1983bbc9e9ee561cb728867db89e1f6&type=album',
+        width: 150,
       ),
     );
   }

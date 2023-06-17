@@ -1,49 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ListTileExample extends StatelessWidget {
-  const ListTileExample({super.key});
+  const ListTileExample({Key? key});
 
   @override
   Widget build(BuildContext context) {
     final listTiles = <Widget>[
       const ListTile(
-        title: Text('Tile 0: basic'),
+        title: Text(
+          'Tile 0: basic',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       const Divider(),
       const ListTile(
-        leading: Icon(Icons.face),
-        title: Text('Tile 1: with leading/trailing widgets'),
-        trailing: Icon(Icons.tag_faces),
+        leading: Icon(Icons.face, color: Colors.green),
+        title: Text(
+          'Tile 1: with leading/trailing widgets',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        trailing: Icon(Icons.tag_faces, color: Colors.deepPurple),
       ),
       const Divider(),
       const ListTile(
-        title: Text('Tile 2 title'),
-        subtitle: Text('subtitle of tile 2'),
+        title: Text(
+          'Tile 2 title',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        subtitle: Text(
+          'subtitle of tile 2',
+          style: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
       ),
       const Divider(),
       const ListTile(
-        title: Text('Tile 3: 3 lines'),
+        title: Text(
+          'Tile 3: 3 lines',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         isThreeLine: true,
-        subtitle: Text('subtitle of tile 3'),
+        subtitle: Text(
+          'subtitle of tile 3',
+          style: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
       ),
       const Divider(),
       const ListTile(
-        title: Text('Tile 4: dense'),
+        title: Text(
+          'Tile 4: dense',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         dense: true,
       ),
       const Divider(),
       const ListTile(
-        title: Text('Tile5: tile with badge'),
-        subtitle: Text('(This uses the badges package)'),
-        trailing: Badge(
-          label: Text('3'),
-          child: Icon(Icons.message),
+        title: Text(
+          'Tile 5: tile with badge',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        subtitle: Text(
+          '(This uses the badges package)',
+          style: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
+        trailing: badges.Badge(
+          badgeContent: Text(
+            '3',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          child: Icon(Icons.message, color: Color.fromARGB(174, 126, 222, 130)),
         ),
       ),
     ];
-    // Directly returning a list of widgets is not common practice.
-    // People usually use ListView.builder, c.f. "ListView.builder" example.
-    // Here we mainly demostrate ListTile.
-    return ListView(children: listTiles);
+
+    return Container(
+      margin: const EdgeInsets.all(16.0),
+      child: ListView(
+        children: listTiles,
+      ),
+    );
   }
 }
