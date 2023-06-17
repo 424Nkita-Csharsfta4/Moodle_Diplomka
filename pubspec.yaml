@@ -1,0 +1,29 @@
+name: my_app
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  convex_bottom_bar: ^3.0.0
+  cupertino_icons: ^1.0.2
+  english_words: ^4.0.0
+  russian_words: ^0.2.0
+  http: ^0.13.4
+  flutter_slidable: ^3.0.0
+  web_socket_channel: ^2.4.0
+  mockito: ^5.4.2
+  badges: ^3.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
