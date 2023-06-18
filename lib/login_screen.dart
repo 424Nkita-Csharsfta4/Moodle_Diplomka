@@ -35,6 +35,10 @@ class LoginScreen extends StatelessWidget {
                     // Add any other email validation logic here as per your requirements
                     return null;
                   },
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16.0),
                 // Password input field
@@ -51,6 +55,10 @@ class LoginScreen extends StatelessWidget {
                     // Add any other password validation logic here as per your requirements
                     return null;
                   },
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 24.0),
                 ElevatedButton(
@@ -73,7 +81,21 @@ class LoginScreen extends StatelessWidget {
                       );
                     }
                   },
+                  // ignore: sort_child_properties_last
                   child: const Text('Войти'),
+                  style: ElevatedButton.styleFrom(
+                    // ignore: deprecated_member_use
+                    primary: Colors.orange,
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -1,99 +1,109 @@
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
-import 'user.dart';
+import 'package:badges/badges.dart' as badges;
 
-class ChatScreen extends StatefulWidget {
-  final User? user;
-
-  const ChatScreen({Key? key, required this.user}) : super(key: key);
-
-  @override
-  _ChatScreenState createState() => _ChatScreenState();
-}
-
-class _ChatScreenState extends State<ChatScreen> {
-  final channel = WebSocketChannel.connect(Uri.parse('wss://example.com/ws'));
-  final TextEditingController _controller = TextEditingController();
-  List<String> messages = [];
-
-  @override
-  void dispose() {
-    channel.sink.close();
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _sendMessage() {
-    if (_controller.text.isNotEmpty) {
-      channel.sink.add(_controller.text);
-      _controller.clear();
-    }
-  }
+class ListTileExample extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
+  const ListTileExample({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Chat with ${widget.user?.name} ${widget.user?.surname}'),
+    final listTiles = <Widget>[
+      const ListTile(
+        title: Text(
+          'Tile 0: basic',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: StreamBuilder(
-              stream: channel.stream,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final message = snapshot.data.toString();
-                  messages.add(message);
-                }
-                return ListView.builder(
-                  itemCount: messages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: ListTile(
-                        tileColor: Colors.grey[200],
-                        title: Text(
-                          messages[index],
-                          style: const TextStyle(fontSize: 16.0),
-                        ),
-                        trailing: CircleAvatar(
-                          backgroundColor: Theme.of(context).primaryColor,
-                          child: Text(
-                            widget.user?.name[0] ?? '',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
+      const Divider(),
+      const ListTile(
+        leading: Icon(Icons.face, color: Colors.green),
+        title: Text(
+          'Tile 1: with leading/trailing widgets',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        trailing: Icon(Icons.tag_faces, color: Colors.deepPurple),
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text(
+          'Tile 2 title',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        subtitle: Text(
+          'subtitle of tile 2',
+          style: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text(
+          'Tile 3: 3 lines',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        isThreeLine: true,
+        subtitle: Text(
+          'subtitle of tile 3',
+          style: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text(
+          'Tile 4: dense',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        dense: true,
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text(
+          'Tile 5: tile with badge',
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        subtitle: Text(
+          '(This uses the badges package)',
+          style: TextStyle(
+            fontSize: 14.0,
+          ),
+        ),
+        trailing: badges.Badge(
+          badgeContent: Text(
+            '3',
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _controller,
-                    decoration: const InputDecoration(
-                      hintText: 'Type a message...',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8.0),
-                FloatingActionButton(
-                  onPressed: _sendMessage,
-                  child: const Icon(Icons.send),
-                ),
-              ],
-            ),
-          ),
-        ],
+          child: Icon(Icons.message, color: Color.fromARGB(255, 0, 122, 255)),
+        ),
+      ),
+    ];
+
+    return Container(
+      margin: const EdgeInsets.all(16.0),
+      child: ListView(
+        children: listTiles,
       ),
     );
   }

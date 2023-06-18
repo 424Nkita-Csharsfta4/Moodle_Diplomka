@@ -3,18 +3,17 @@ class User {
   final String surname;
   final String avatar;
   final String email;
-  final int? friendsCount;
+  final int friendsCount;
+  final String group;
 
-  User(
-    String username, {
+  User({
     required this.name,
     required this.surname,
     required this.avatar,
     required this.email,
     required this.friendsCount,
+    required this.group,
   });
-
-  get group => null;
 
   get followersCount => null;
 }

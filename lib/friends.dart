@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
 class ListTileExample extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const ListTileExample({Key? key});
 
   @override
@@ -94,7 +95,7 @@ class ListTileExample extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          child: Icon(Icons.message, color: Color.fromARGB(174, 126, 222, 130)),
+          child: Icon(Icons.message, color: Color.fromARGB(255, 255, 0, 0)),
         ),
       ),
     ];

@@ -8,6 +8,7 @@ class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
@@ -39,13 +40,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       final email = _emailController.text;
       final password = _passwordController.text;
 
-      final url = Uri.parse('');
+      final url = Uri.parse(''); // Replace with your registration API endpoint
       final body = jsonEncode({'email': email, 'password': password});
 
       try {
         final response = await http.post(url, body: body);
 
         if (response.statusCode == 200) {
+          // Registration successful, navigate to the news feed screen
           // ignore: use_build_context_synchronously
           Navigator.push(
             context,
@@ -54,6 +56,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
           );
         } else {
+          // Show error dialog for invalid credentials
           // ignore: use_build_context_synchronously
           showDialog(
             context: context,
@@ -72,10 +75,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           );
         }
       } catch (error) {
+        // Show error message for network errors
         // ignore: avoid_print
         print('Ошибка: $error');
       }
     } else {
+      // Form is invalid, do something (e.g., show error message)
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -83,54 +88,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
       );
     }
-
-    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
-      final email = _emailController.text;
-      final password = _passwordController.text;
-
-      final url = Uri.parse('');
-      final body = jsonEncode({'email': email, 'password': password});
-
-      try {
-        final response = await http.post(url, body: body);
-
-        if (response.statusCode == 200) {
-          // ignore: use_build_context_synchronously
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const NewsFeedScreen(),
-            ),
-          );
-        } else {
-          // ignore: use_build_context_synchronously
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: const Text('Ошибка'),
-              content: const Text('Неверные учетные данные.'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          );
-        }
-      } catch (error) {
-        // ignore: avoid_print
-        print('Ошибка: $error');
-      }
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Используем MainRibbon вместо AppBar
+      // ignore: prefer_const_constructors
+      // appBar: MainRibbon(), // Use MainRibbon instead of AppBar
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Form(
@@ -142,6 +106,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 'https://sun9-26.userapi.com/impg/BcM9ZJnyLKJi0UktgxUL7h8CkA2ST267KkQqKA/28lOIrfjYRU.jpg?size=224x54&quality=96&sign=f1983bbc9e9ee561cb728867db89e1f6&type=album',
                 width: 200,
                 height: 200,
+                alignment: Alignment.center,
               ),
               const SizedBox(height: 20),
               const Text(
@@ -235,7 +200,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      // Обработчик нажатия кнопки "Вход"
+                      // Handler for "Вход" button press
                     },
                     child: const Text('Вход'),
                   ),
@@ -271,17 +236,17 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+                  // Handler for selecting specialization button press
                 },
                 child: const Text('Юристы'),
               ),
             ),
-            const SizedBox(height: 8), // Расстояние между специальностями
+            const SizedBox(height: 8), // Spacing between specializations
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+                  // Handler for selecting specialization button press
                 },
                 child: const Text('Программисты'),
               ),
@@ -291,7 +256,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+                  // Handler for selecting specialization button press
                 },
                 child: const Text('Инженеры'),
               ),
@@ -301,7 +266,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Обработчик нажатия кнопки выбора специальности
+                  // Handler for selecting specialization button press
                 },
                 child: const Text('Философы'),
               ),
@@ -316,7 +281,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
 class MainRibbon extends StatelessWidget {
   const MainRibbon({Key? key}) : super(key: key);
 
-  // ignore: override_on_non_overriding_member
+  // ignore: override_on_non_overriding_member, override_on_non_overriding_member
   @override
   Size get preferredSize => const Size.fromHeight(56);
 
@@ -329,6 +294,7 @@ class MainRibbon extends StatelessWidget {
         'https://sun9-26.userapi.com/impg/BcM9ZJnyLKJi0UktgxUL7h8CkA2ST267KkQqKA/28lOIrfjYRU.jpg?size=224x54&quality=96&sign=f1983bbc9e9ee561cb728867db89e1f6&type=album',
         width: 150,
       ),
+      centerTitle: true,
     );
   }
 }

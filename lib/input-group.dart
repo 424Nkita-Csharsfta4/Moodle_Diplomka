@@ -89,6 +89,18 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
             ElevatedButton(
               onPressed: _validateGroup,
               child: const Text('Начать'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.orange,
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
             ),
           ],
         ),
