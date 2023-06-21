@@ -76,7 +76,10 @@ class LoginScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NewsScreen(username: email),
+                          builder: (context) => NewsScreen(
+                            username: email,
+                            user: null,
+                          ),
                         ),
                       );
                     }
@@ -96,6 +99,34 @@ class LoginScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
+                ),
+                const SizedBox(height: 24.0),
+                const Text(
+                  'Или войдите через другую социальную сеть',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        // Handle VK authentication
+                        // Add your VK authentication logic here
+                      },
+                      icon: Image.asset('assets/vk.png'),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        // Handle Instagram authentication
+                        // Add your Instagram authentication logic here
+                      },
+                      icon: Image.asset('assets/instagram.png'),
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -58,6 +58,7 @@ class ProfileScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6),
                   ),
+                  // ignore: deprecated_member_use
                   primary: Colors.blue,
                 ),
                 child: const Text(

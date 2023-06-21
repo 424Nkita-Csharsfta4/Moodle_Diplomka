@@ -30,7 +30,9 @@ class WaitingScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/login');
                     },
                     style: ElevatedButton.styleFrom(
+                      // ignore: deprecated_member_use
                       primary: Colors.white,
+                      // ignore: deprecated_member_use
                       onPrimary: Colors.black,
                       side: const BorderSide(
                         color: Colors.black,
@@ -48,7 +50,9 @@ class WaitingScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/registration');
                     },
                     style: ElevatedButton.styleFrom(
+                      // ignore: deprecated_member_use
                       primary: const Color(0xFF4C6ED7),
+                      // ignore: deprecated_member_use
                       onPrimary: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(3),
@@ -85,6 +89,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+// ignore: use_key_in_widget_constructors
 class MainRibbon extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(56);

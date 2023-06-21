@@ -281,7 +281,7 @@ class SpecializationSelectionScreen extends StatelessWidget {
 class MainRibbon extends StatelessWidget {
   const MainRibbon({Key? key}) : super(key: key);
 
-  // ignore: override_on_non_overriding_member, override_on_non_overriding_member
+  // ignore: override_on_non_overriding_member
   @override
   Size get preferredSize => const Size.fromHeight(56);
 

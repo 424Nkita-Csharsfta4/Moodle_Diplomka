@@ -88,8 +88,10 @@ class _GroupSelectionScreenState extends State<GroupSelectionScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _validateGroup,
+              // ignore: sort_child_properties_last
               child: const Text('Начать'),
               style: ElevatedButton.styleFrom(
+                // ignore: deprecated_member_use
                 primary: Colors.orange,
                 textStyle: const TextStyle(
                   fontSize: 18,
