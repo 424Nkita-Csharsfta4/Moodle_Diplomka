@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  convex_bottom_bar: ^3.0.0
   cupertino_icons: ^1.0.2
   english_words: ^4.0.0
   russian_words: ^0.2.0
@@ -19,6 +18,14 @@ dependencies:
   web_socket_channel: ^2.4.0
   mockito: ^5.4.2
   badges: ^3.1.1
+  flutter_router: ^1.1.0
+  flutter_spinkit: ^5.1.0
+  convex_bottom_bar: ^3.0.0
+  flutter_svg: ^0.22.0
+  flutter_staggered_animations: ^1.1.1
+  get: ^4.6.5
+  flutter_facebook_auth: ^5.0.11
+  google_sign_in: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +34,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+        - assets/images/
+    # - ../assets/icons/
