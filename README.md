@@ -1,16 +1,24 @@
-# my_app
+<h1>Moodle</h1>
+<p>Moodle - это социальная сеть для техникума, разработанная с использованием Flutter (frontend), Firebase (backend) и Node.js (backend). 
+Приложение позволяет студентам и преподавателям обмениваться информацией, задавать вопросы, делиться материалами и взаимодействовать друг с другом в рамках учебного процесса.</p>
 
-A new Flutter project.
 
-## Getting Started
+<h1>Функциональность</h1>
+<p>Авторизация и профиль пользователя:</p> Пользователи могут создать учетную запись, авторизоваться и управлять своим профилем.
 
-This project is a starting point for a Flutter application.
+<p>Лента новостей:</p> Пользователи могут просматривать последние новости, объявления и обновления, связанные с их учебным заведением.
 
-A few resources to get you started if this is your first Flutter project:
+<p>Курсы и материалы:</p> Студенты могут просматривать доступные курсы, загружать материалы, просматривать расписание занятий и получать доступ к учебным ресурсам.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<p>Форумы и обсуждения:</p> Пользователи могут создавать темы обсуждения, отвечать на сообщения и обмениваться идеями и знаниями в рамках учебных предметов или групп.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p>Личные сообщения:</p> Пользователи могут обмениваться личными сообщениями, задавать вопросы и общаться один на один.
+
+<p>Уведомления:</p> Пользователи получают уведомления о новых сообщениях, обновлениях курсов и других важных событиях.
+
+<p>Профиль преподавателя:</p> Преподаватели имеют расширенные возможности для управления курсами, выставления оценок и взаимодействия с учащимися.
+
+
+
+
+![image](https://github.com/424Nkita-Csharsfta4/Moodle_Diplomka/assets/103760832/29d6ecc5-6bd2-4997-8444-a5ee2878001c)
