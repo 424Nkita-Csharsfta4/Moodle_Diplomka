@@ -19,34 +19,8 @@
 <p>Профиль преподавателя:</p> Преподаватели имеют расширенные возможности для управления курсами, выставления оценок и взаимодействия с учащимися.
 
 <h1>Иерарфия файлов в стиле методологии FSD</h1>
-my_app/
-├── lib/
-│   ├── main.dart
-│   ├── pages/
-│   │   ├── app/
-│   │   │   ├── data/
-│   │   │   │   ├── enums/
-│   │   │   │   │   ├── post_type.dart
-│   │   │   │   ├── models/
-│   │   │   │   │   ├── post_model.dart
-│   │   │   ├── models/
-│   │   │   │   ├── home/
-│   │   │   │   │   ├── components/
-│   │   │   │   │   │   ├── custom_icons.dart
-│   │   │   │   │   │   ├── post_card.dart
-│   │   │   │   │   │   ├── post_type_chips.dart
-│   │   │   │   │   ├── home_view.dart
-│   │   │   │   │   ├── post_detail_page.dart
-│   │   │   ├── profile/
-│   │   │   │   ├── components/
-│   │   │   │   │   ├── profile_card.dart
-│   │   │   │   ├── profile_view.dart
-├── assets/
-│   ├── images/
-│   │   ├── profile_image.png
-├── test/
-├── pubspec.yaml
-├── README.md
+
+![image](https://github.com/424Nkita-Csharsfta4/Moodle_Diplomka/assets/103760832/82f94c12-fb37-4414-9ab2-2342846af3e0)
 
 
 ![image](https://github.com/424Nkita-Csharsfta4/Moodle_Diplomka/assets/103760832/29d6ecc5-6bd2-4997-8444-a5ee2878001c)
